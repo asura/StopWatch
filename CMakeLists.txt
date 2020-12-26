@@ -1,9 +1,11 @@
-cmake_minimum_required(VERSION 2.6.4 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 
 project(
   StopWatch
-  CXX
+  LANGUAGES CXX
 )
+
+set(CMAKE_CXX_STANDARD 11)
 
 if(CMAKE_BUILD_TYPE)
   if(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
@@ -25,27 +27,10 @@ include_directories(
   ${CMAKE_SOURCE_DIR}/include
 )
 
-add_custom_target(
-  check_crlf
-  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-  COMMAND ./scripts/check_crlf.sh
-)
-
-add_custom_target(
-  mkdir_build
-  COMMAND mkdir -p ${CMAKE_SOURCE_DIR}/bin/${DIR_NAME}
-)
-
-
 add_library(
   stopwatch
   SHARED
   ${CMAKE_SOURCE_DIR}/src/StopWatch.cpp
-)
-
-add_dependencies(
-  stopwatch
-  check_crlf
 )
 
 add_executable(
@@ -56,5 +41,4 @@ add_executable(
 target_link_libraries(
   demo
   stopwatch
-  rt
 )

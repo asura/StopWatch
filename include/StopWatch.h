@@ -24,4 +24,5 @@ public:
     /// 実所要時間を返す(単位:ミリ秒)
     double timespan_real() const;
 };
+
 #endif /* !STOPWATCH_H_ */
