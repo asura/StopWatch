@@ -34,6 +34,12 @@ add_library(
   ${PROJECT_SOURCE_DIR}/src/StopWatch.cpp
 )
 
+target_include_directories(
+  stopwatch
+  PUBLIC 
+  ${PROJECT_SOURCE_DIR}/include
+)
+
 add_executable(
   demo
   ${PROJECT_SOURCE_DIR}/src/demo.cpp
