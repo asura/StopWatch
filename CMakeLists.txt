@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 
 project(
   StopWatch
+  VERSION 0.1.0
   LANGUAGES CXX
 )
 
@@ -24,18 +25,18 @@ set(CMAKE_CXX_FLAGS_DEBUG "-DDEBUG -O0 -g3")
 set(CMAKE_CXX_FLAGS_RELEASE "-DNDEBUG -O3")
 
 include_directories(
-  ${CMAKE_SOURCE_DIR}/include
+  ${PROJECT_SOURCE_DIR}/include
 )
 
 add_library(
   stopwatch
   SHARED
-  ${CMAKE_SOURCE_DIR}/src/StopWatch.cpp
+  ${PROJECT_SOURCE_DIR}/src/StopWatch.cpp
 )
 
 add_executable(
   demo
-  ${CMAKE_SOURCE_DIR}/src/demo.cpp
+  ${PROJECT_SOURCE_DIR}/src/demo.cpp
 )
 
 target_link_libraries(
